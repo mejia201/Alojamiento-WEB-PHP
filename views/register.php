@@ -1,13 +1,9 @@
 <?php
-ini_set('display_errors', 1);  // Muestra los errores
-ini_set('display_startup_errors', 1);  // Muestra los errores al iniciar PHP
-error_reporting(E_ALL);  // Informa sobre todos los tipos de errores
-?>
+ini_set('display_errors', 1); // Muestra los errores
+ini_set('display_startup_errors', 1); // Muestra los errores al iniciar PHP
+error_reporting(E_ALL); // Informa sobre todos los tipos de errores
 
-
-<?php
 require '../database/config.php';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -19,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validación básica de entrada
         if (empty($nombre) || empty($email) || empty($password)) {
             echo "Todos los campos son requeridos.";
-            exit;
+            exit();
         }
 
         // Validación del formato del correo electrónico
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo "Correo electrónico inválido.";
-            exit;
+            exit();
         }
 
         // Verificar si el correo ya está registrado
@@ -33,19 +29,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$email]);
         if ($stmt->rowCount() > 0) {
             echo "El correo electrónico ya está registrado.";
-            exit;
+            exit();
         }
 
-        
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-       
         $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)");
         $stmt->execute([$nombre, $email, $hashedPassword]);
 
-        
         header("Location: login.php");
-        exit;
+        exit();
     } catch (PDOException $e) {
         echo "Error en la base de datos: " . $e->getMessage();
     } catch (Exception $e) {
@@ -53,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">

@@ -1,19 +1,14 @@
 <?php
-ini_set('display_errors', 1);  // Muestra los errores
-ini_set('display_startup_errors', 1);  // Muestra los errores al iniciar PHP
-error_reporting(E_ALL);  // Informa sobre todos los tipos de errores
-?>
+ini_set('display_errors', 1); // Muestra los errores
+ini_set('display_startup_errors', 1); // Muestra los errores al iniciar PHP
+error_reporting(E_ALL);
 
-
-<?php
 require '../database/config.php';
 session_start();
-
 
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -27,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['is_admin'] = $user['is_admin'];
 
-         // Redirigir según el rol del usuario
-         if ($user['is_admin'] == 1) {
+        // Redirigir según el rol del usuario
+        if ($user['is_admin'] == 1) {
             // Si es administrador, redirigir al panel de administración
             header("Location: admin.php");
             exit();
@@ -42,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Credenciales incorrectas.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>

@@ -1,11 +1,8 @@
 <?php
-ini_set('display_errors', 1);  // Muestra los errores
-ini_set('display_startup_errors', 1);  // Muestra los errores al iniciar PHP
-error_reporting(E_ALL);  // Informa sobre todos los tipos de errores
-?>
+ini_set('display_errors', 1); // Muestra los errores
+ini_set('display_startup_errors', 1); // Muestra los errores al iniciar PHP
+error_reporting(E_ALL);
 
-
-<?php
 require '../database/config.php';
 require_once '../helpers/baseURL.php';
 
@@ -14,7 +11,7 @@ session_start();
 // Verificación de acceso de administrador
 if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
     header("Location: login.php");
-    exit;
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     header("Location: " . BASE_URL);
 }
+
 ?>
 
 <!DOCTYPE html>

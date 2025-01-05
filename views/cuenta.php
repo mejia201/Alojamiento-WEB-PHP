@@ -1,17 +1,15 @@
 <?php
-ini_set('display_errors', 1);  // Muestra los errores
-ini_set('display_startup_errors', 1);  // Muestra los errores al iniciar PHP
-error_reporting(E_ALL);  // Informa sobre todos los tipos de errores
-?>
+ini_set('display_errors', 1); // Muestra los errores
+ini_set('display_startup_errors', 1); // Muestra los errores al iniciar PHP
+error_reporting(E_ALL); // Informa sobre todos los tipos de errores
 
-<?php
 require '../database/config.php';
 require_once '../helpers/baseURL.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
-    exit;
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];
@@ -23,6 +21,7 @@ $stmt = $pdo->prepare("SELECT a.id, a.nombre, a.descripcion, a.imagen
                        WHERE ua.id_usuario = ?");
 $stmt->execute([$user_id]);
 $alojamientos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
