@@ -1,17 +1,15 @@
 <?php
-ini_set('display_errors', 1);  // Muestra los errores
-ini_set('display_startup_errors', 1);  // Muestra los errores al iniciar PHP
-error_reporting(E_ALL);  // Informa sobre todos los tipos de errores
-?>
+ini_set('display_errors', 1); // Muestra los errores
+ini_set('display_startup_errors', 1); // Muestra los errores al iniciar PHP
+error_reporting(E_ALL);
 
-<?php
 require '../database/config.php';
 session_start();
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
-    exit;
+    exit();
 }
 
 // Verificar si se ha enviado el ID del alojamiento
@@ -24,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_alojamiento'])) {
         $_SESSION['message'] = "ID de alojamiento inválido.";
         $_SESSION['message_type'] = "danger";
         header("Location: cuenta.php");
-        exit;
+        exit();
     }
 
     // Eliminar el alojamiento seleccionado por el usuario
@@ -41,6 +39,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_alojamiento'])) {
     }
 
     header("Location: cuenta.php");
-    exit;
+    exit();
 }
-?>

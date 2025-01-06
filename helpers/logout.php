@@ -1,10 +1,9 @@
 <?php
 require_once 'baseURL.php';
 
-session_start(); 
+session_start();
 
-
-$_SESSION = array();
+$_SESSION = [];
 
 if (ini_get("session.use_cookie")) {
     $params = session_get_cookie_params();
@@ -15,4 +14,3 @@ session_destroy();
 
 header("Location: " . BASE_URL);
 exit();
-?>

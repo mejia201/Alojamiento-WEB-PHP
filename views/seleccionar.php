@@ -1,17 +1,11 @@
 <?php
-ini_set('display_errors', 1);  // Muestra los errores
-ini_set('display_startup_errors', 1);  // Muestra los errores al iniciar PHP
-error_reporting(E_ALL);  // Informa sobre todos los tipos de errores
-?>
 
-
-<?php
 require '../database/config.php';
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
-    exit;
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,13 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$user_id, $id_alojamiento]);
 
         $_SESSION['message'] = "Alojamiento seleccionado exitosamente.";
-        $_SESSION['message_type'] = "success"; 
+        $_SESSION['message_type'] = "success";
     } else {
-        $_SESSION['message'] = "Este alojamiento ya está seleccionado."; 
-        $_SESSION['message_type'] = "warning"; 
+        $_SESSION['message'] = "Este alojamiento ya está seleccionado.";
+        $_SESSION['message_type'] = "warning";
     }
 }
 
 header("Location: cuenta.php");
-exit;
-?>
+exit();
