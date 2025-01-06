@@ -1,4 +1,16 @@
-/* Custom Airbnb-style Navbar CSS */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+
+body {
+    font-family: "Circular", -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    background-color: #f7f7f7;
+    color: #484848;
+}
+
+h1, h4 {
+    font-weight: 600;
+    color: #222222;
+}
+
 .navbar {
     height: 80px;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
@@ -7,7 +19,7 @@
 .navbar-brand {
     padding-top: 0;
     padding-bottom: 0;
-    color: #FF5A5F !important;
+    color: #ff5a5f !important;
 }
 
 .navbar-nav .nav-link {
@@ -46,7 +58,6 @@
     }
 }
 
-/* Airbnb-style accommodations list */
 .card {
     transition: box-shadow 0.3s ease-in-out;
 }
@@ -60,13 +71,6 @@
     object-fit: cover;
 }
 
-.card-title {
-    font-size: 1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 .card-text {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -75,14 +79,78 @@
 }
 
 .btn-primary {
-    background-color: #FF5A5F;
-    border-color: #FF5A5F;
+    background-color: #ff5a5f;
+    border-color: #ff5a5f;
 }
 
-.btn-primary:hover, .btn-primary:focus {
-    background-color: #FF385C;
-    border-color: #FF385C;
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #ff385c;
+    border-color: #ff385c;
 }
 
-/* Add Bootstrap Icons if not already included */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
+.card {
+    border-radius: 12px;
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222222;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.form-label {
+    font-size: 14px;
+    color: #222222;
+}
+
+.form-control {
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #008489;
+    box-shadow: 0 0 0 1px #008489;
+}
+
+.form-control::placeholder {
+    color: #767676;
+}
+
+.btn-danger {
+    background-color: #ff5a5f;
+    border-color: #ff5a5f;
+}
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: #ff385c;
+    border-color: #ff385c;
+}
+.alert {
+    border-radius: 12px;
+}
+
+.error {
+    color: #ff5a5f;
+    background-color: #fff8f6;
+    border: 1px solid #ffdad2;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+a {
+    color: #008489;
+    text-decoration: none;
+}
+a:hover {
+    color: #006c70;
+    text-decoration: underline;
+}

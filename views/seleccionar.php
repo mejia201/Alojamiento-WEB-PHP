@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1); // Muestra los errores
-ini_set('display_startup_errors', 1); // Muestra los errores al iniciar PHP
-error_reporting(E_ALL); // Informa sobre todos los tipos de errores
 
 require '../database/config.php';
 session_start();
